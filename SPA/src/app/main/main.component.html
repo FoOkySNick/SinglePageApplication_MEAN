@@ -1,0 +1,21 @@
+<article class="controls">
+  <button routerLink="/pay-by-card"
+    (click)="payClicked()" class="controls__pay controls__button"
+    [ngClass]="{clicked:isPayActive}">Заплатить
+  </button>
+  <button routerLink="/request-payment"
+    (click)="requestPaymentClicked()" class="controls__button request_payment_label"
+    [ngClass]="{clicked:isRequestPaymentActive}">Запросить платеж
+  </button>
+
+  <section *ngIf="isPayActive" class="controls__pay-inner">
+    <button routerLink="/pay-by-card"
+      (click)="payByCardClicked()" class="controls__by-card controls__button"
+      [ngClass]="{clicked:isPayByCardActive}">С карты любого банка
+    </button>
+    <button  routerLink="/pay-from-online-bank"
+      (click)="payFromOnlineBankClicked()" class="controls__from-online-bank controls__button"
+      [ngClass]="{clicked:isPayFromOnlineBankActive}">Из своего интернет банка
+    </button>
+  </section>
+</article>

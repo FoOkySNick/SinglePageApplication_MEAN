@@ -1,0 +1,40 @@
+<app-message [show]="isNotAuthorised" [title]="'Ой-ой'" [message]="'Сначала войдите в свой личный кабинет. Если вы еще не зарегистрированы в системе - пожалуйста, сначала пройдите регистрацию.'"></app-message>
+<app-message [show]="isFailure" [title]="'Упс'" [message]="'Непредвиденная ошибка, пожалуйста проверьте соединение с сетью'"></app-message>
+<app-message [show]="isNotComplete" [title]="'Внимание'" [message]="'Заполните все данные корректно'"></app-message>
+<app-message [show]="isComplete" [title]="'Успех'" [message]="'Ваш платеж был принят'"></app-message>
+
+<app-wait-screen *ngIf="isShadowed"></app-wait-screen>
+
+<form #myForm="ngForm" (ngSubmit)="mySubmit(myForm.value)">
+  <section class="card-info">
+    <section class="card-types">
+      <img src="../../../assets/card_types/mir.png">
+      <img src="../../../assets/card_types/mastercard.png">
+      <img src="../../../assets/card_types/visa.png">
+    </section>
+    <input class="card-number" type="tel" name="cardNumber" placeholder="Номер карты" required
+           pattern="[0-9]{16}" ngModel autocomplete="off">
+    <input class="valid-thru" type="url" name="validThru" placeholder="ММ/ГГ" required
+           pattern="(0[1-9]|1[0-2])/[0-9]{2}" ngModel autocomplete="off">
+    <input class="cvc-code" type="tel" name="cvcCode" placeholder="CVC" required
+           pattern="[0-9]{3}" ngModel autocomplete="off">
+  </section>
+  <section class="payment-info usual-form_main-theme-styled">
+    <label class="label_block_margined">
+      Сумма
+      <input class="input_main-theme-styled" name="moneyAmount" placeholder="от 1 000 до 99 999 рублей" required
+             pattern="[0-9]{4,5}" type="tel" ngModel autocomplete="off">
+    </label>
+    <label class="label_block_margined">
+      Комментарий
+      <input class="input_main-theme-styled" type="text" name="comment" placeholder="До 150 символов"
+             maxlength="150" ngModel autocomplete="off">
+    </label>
+    <label class="label_block_margined">
+      Ваша электронная почта
+      <input class="input_main-theme-styled" name="email" placeholder="Для квитанций об оплате" required
+             pattern="[a-zA-Z0-9]+@[a-z]+(.ru)|(.com)" type="email" ngModel autocomplete="off">
+    </label>
+    <button class="submit_main-theme-styled pay-button">Заплатить</button>
+  </section>
+</form>

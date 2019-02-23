@@ -1,0 +1,41 @@
+.controls__button
+{
+  font-size: 17px;
+  margin: 5px 20px;
+  transition: .5s;
+  border: 2px solid #cacaca;
+  border-radius: 10px;
+  background: #cacaca;
+  min-width: 250px;
+  max-width: 250px;
+  text-align: center;
+  padding: 5px;
+  text-decoration: none;
+  color: #007bff;
+}
+
+.controls__button:hover,
+.clicked
+{
+  transform: scale(1.2, 1.2);
+  transition: .5s;
+  cursor: pointer;
+  color: #bc94dd;
+  background: white;
+  border: 2px solid #cacaca;
+  border-radius: 10px;
+}
+
+.controls
+{
+  text-align: center;
+}
+
+@media screen and (max-width: 300px){
+  .controls__button
+  {
+    width: auto;
+    margin: 5px 10px;
+    min-width: 175px;
+  }
+}

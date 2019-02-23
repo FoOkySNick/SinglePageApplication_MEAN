@@ -1,0 +1,49 @@
+.message-title
+{
+  color: #bc94dd;
+}
+
+.message-content
+{
+  color: #007bff;
+}
+
+.message-title,
+.message-content
+{
+  width: 100%;
+  text-align: center;
+}
+
+.cress-cross
+{
+  border: none;
+  background: #bc94dd;
+  color: red;
+  border-radius: 15px;
+  box-shadow: 0 0 3px 3px lightgray;
+  float: right;
+}
+
+.cress-cross:hover
+{
+  animation: shake ease-in-out .3s infinite;
+  cursor: pointer;
+}
+
+@keyframes shake {
+  25%
+  {
+    transform: translateX(1px);
+  }
+
+  75%
+  {
+    transform: translateX(-2px);
+  }
+
+  100%
+  {
+    transform: translateX(1px);
+  }
+}

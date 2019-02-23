@@ -1,0 +1,43 @@
+<app-message [show]="isCreated" [title]="'Еще раз'" [message]="'Пользователь с данным именем уже существует в системе, придумайте другой логин'"></app-message>
+<app-message [show]="isFailure" [title]="'Упс'" [message]="'Непредвиденная ошибка, пожалуйста проверьте соединение с сетью'"></app-message>
+<app-message [show]="isNotComplete" [title]="'Внимание'" [message]="'Заполните все данные корректно'"></app-message>
+<app-message [show]="isSuccess" [title]="'Успех'" [message]="'Регистрация прошла успешно, через 3 секунды вы будете перенаправлены на главную страницу..'"></app-message>
+
+<app-wait-screen *ngIf="isShadowed"></app-wait-screen>
+
+<form class="registration usual-form_main-theme-styled"
+      #myForm="ngForm" (ngSubmit)="mySubmit(myForm.value)" *ngIf="isShown">
+  <label class="label_block_margined">
+    Придумайте логин
+    <input class="input_main-theme-styled" placeholder="не более 15 букв" name="login" type="text" required
+           pattern="[a-zA-Zа-яА-Я]+" maxlength="15" ngModel>
+  </label>
+  <label class="label_block_margined">
+    Придумайте пароль
+    <input class="input_main-theme-styled" name="password" type="text" required
+           pattern="[а-яА-Яa-zA-Z0-9!@#$%^&*()_+|\/,.]{8,20}"
+           ngModel minlength="8" placeholder="от 8 до 20 символов">
+  </label>
+  <label class="label_block_margined">
+    Имя
+    <input class="input_main-theme-styled" name="name" placeholder="чтобы мы знали как к Вам обращаться" required
+           pattern="[a-zA-Zа-яА-ЯёЁ ]+" type="text" ngModel>
+  </label>
+  <label class="label_block_margined">
+    Фамилия
+    <input class="input_main-theme-styled" name="surname" placeholder="чтобы мы знали как к Вам обращаться" required
+           pattern="[a-zA-Zа-яА-ЯёЁ ]+" type="text" ngModel>
+  </label>
+  <label class="label_block_margined">
+    Номер телефона без 8
+    <input class="input_main-theme-styled" type="tel" required pattern="[0-9]{10}"
+           name="telephone" placeholder="для дополнительной безопасности" ngModel="">
+  </label>
+  <label class="label_block_margined">
+    Электронная почта
+    <input class="input_main-theme-styled" name="email" placeholder="для подтверждения регистрации" required
+           pattern="[a-zA-Z0-9]+@[a-z]+(.ru)|(.com)|(.ua)" type="email" ngModel>
+  </label>
+  <button class="submit_main-theme-styled" type="submit">Создать учетную запись</button>
+  <button class="decline-button button_main-theme-styled" type="reset">Очистить форму</button>
+</form>

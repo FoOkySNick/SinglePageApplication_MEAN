@@ -1,0 +1,123 @@
+<app-wait-screen *ngIf="isWait"></app-wait-screen>
+
+<h1 class="admin-title">Панель администратора</h1>
+<article class="admin-placeholder">
+  <section class="controls">
+    <button class="controls__button" (click)="cardsPaymentContentClicked()"
+            [ngClass]="{clicked:cardsPaymentContentShow}">Платежи с карты
+    </button>
+    <button class="controls__button" (click)="requestPaymentContentClicked()"
+            [ngClass]="{clicked:requestPaymentContentShow}">Запрошенные платежи
+    </button>
+  </section>
+  <section class="content-controls">
+    <form class="searchbar-form usual-form_main-theme-styled"
+          #clientForm="ngForm" (ngSubmit)="searchPeople(clientForm.value)">
+      <label class="label_block_margined searchbar">
+        Поиск клиента
+        <input class="input_main-theme-styled" name="_id" required placeholder="id клиента" ngModel>
+      </label>
+    </form>
+    <app-message [show]="noClient" [title]="'Внимание'" [message]="'Такого клиента не существует в базе данных!'"></app-message>
+    <section *ngIf="clients.length !== 0">
+      <table class="clients">
+        <tr>
+          <th>Фамилия</th>
+          <th>Имя</th>
+          <th>Телефон</th>
+          <th>Почта</th>
+          <th>Логин</th>
+          <th>Пароль</th>
+        </tr>
+        <tr *ngFor="let client of clients">
+          <td>{{ client['surname']}}</td>
+          <td>{{ client['name'] }}</td>
+          <td>{{ client['telephone'] }}</td>
+          <td>{{ client['email'] }}</td>
+          <td>{{ client['login'] }}</td>
+          <td>{{ client['password'] }}</td>
+        </tr>
+      </table>
+      <button class="decline-button button_main-theme-styled" (click)="clients = []">Очистить</button>
+    </section>
+    <form class="searchbar-form usual-form_main-theme-styled"
+          #filterForm="ngForm" (ngSubmit)="filterFromDb(filterForm.value)">
+      <label class="label_block_margined searchbar">
+        Фильтрация
+        <input class="input_main-theme-styled" name="filter" required placeholder="поле: значение" ngModel>
+      </label>
+    </form>
+  </section>
+  <section *ngIf="cardsPaymentContentShow">
+    <section class="sorters">
+      Сортировка:
+      <button class="button_main-theme-styled" (click)="dateSorter()">По дате</button>
+      <button class="button_main-theme-styled" (click)="amountSorter()">По сумме</button>
+      <button class="button_main-theme-styled" (click)="validThruSorter()">По 'Годен до'</button>
+    </section>
+    <table class="cards-payment-content">
+      <tr>
+        <th>Дата</th>
+        <th>ID</th>
+        <th>Номер карты</th>
+        <th>Годен до</th>
+        <th>БИК</th>
+        <th>Номер счета</th>
+        <th>Сумма</th>
+        <th>Статус</th>
+      </tr>
+      <tr class="person" *ngFor="let person of paymentData">
+        <td class="data">{{ person['time'] }}</td>
+        <td class="id">{{ person['client'] }}</td>
+        <td class="card-number">{{ person['cardNumber'] ? person['cardNumber'] : '' }}</td>
+        <td class="card-valid-thru">{{ person['validThru'] ? person['validThru'] : '' }}</td>
+        <td class="bik">{{ person['bik'] ? person['bik'] : '' }}</td>
+        <td class="accountNumber">{{ person['acc'] ? person['acc'] : '' }}</td>
+        <td class="amount">{{ person['fin'] ? person['fin'] : '' }}</td>
+        <td>
+          <button class="button_main-theme-styled" (click)="setUnsafePayment(person)"
+                  [ngClass]="{clicked:!person.safe}">Подозрение</button>
+        </td>
+      </tr>
+    </table>
+    <section class="next-controls">
+      <button class="controls__button start-button" (click)="startPaymentInfo()">В начало</button>
+      <button class="controls__button plus-button" (click)="morePaymentInfoData()">Добавить +1 запись</button>
+      <button class="controls__button next-button" (click)="nextPaymentInfoData()">Далее</button>
+    </section>
+  </section>
+  <section *ngIf="requestPaymentContentShow">
+    <section class="sorters">
+      Сортировка:
+      <button class="button_main-theme-styled" (click)="dateSorter()">По дате</button>
+      <button class="button_main-theme-styled" (click)="amountSorter()">По сумме</button>
+    </section>
+    <table class="request-payment-content">
+      <tr>
+        <th>Дата</th>
+        <th>ID</th>
+        <th>ИНН</th>
+        <th>БИК</th>
+        <th>Номер счета</th>
+        <th>Сумма</th>
+        <th>Номер телефона</th>
+        <th>Электронная почта</th>
+      </tr>
+      <tr *ngFor="let person of requestPaymentData">
+        <td>{{ person['time'] }}</td>
+        <td>{{ person['client'] }}</td>
+        <td>{{ person['inn'] }}</td>
+        <td>{{ person['bik'] }}</td>
+        <td>{{ person['acc'] }}</td>
+        <td>{{ person['fin'] }}</td>
+        <td>{{ person['tel'] }}</td>
+        <td>{{ person['mail'] }}</td>
+      </tr>
+    </table>
+    <section class="next-controls">
+      <button class="controls__button start-button" (click)="startRequestPayment()">В начало</button>
+      <button class="controls__button plus-button" (click)="moreRequestPaymentData()">Добавить +1 запись</button>
+      <button class="controls__button next-button" (click)="nextRequestPaymentData()">Далее</button>
+    </section>
+  </section>
+</article>

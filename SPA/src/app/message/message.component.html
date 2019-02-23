@@ -1,0 +1,5 @@
+<article class="message" *ngIf="isShown">
+  <button class="cress-cross" (click)="hide()">X</button>
+  <h1 class="message-title">{{ showTitle }}</h1>
+  <section class="message-content">{{ showMessage }}</section>
+</article>

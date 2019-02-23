@@ -1,0 +1,73 @@
+.gallery
+{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.footer-title
+{
+  text-align: center;
+}
+
+.brief
+{
+  font-family: "Droid Sans Mono Dotted";
+  font-style: oblique;
+  margin-bottom: 0;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 50%;
+  overflow: hidden;
+}
+
+.brief_target
+{
+  overflow: unset;
+  text-overflow: unset;
+  white-space: unset;
+}
+
+.contact-us > .footer__contacts
+{
+  margin: 20px 10px 0 0;
+  padding-bottom: 20px;
+}
+
+.footer__contacts
+{
+  background: white;
+}
+
+.show-all
+{
+  margin: 5px 0 15px 10px;
+  width: 100px;
+  text-decoration: none;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.gallery__item
+{
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 410px){
+  .gallery
+  {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-us
+  {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

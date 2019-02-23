@@ -1,0 +1,38 @@
+<article class="person-info">
+  <h2 class="fio">Индивидуальный предприниматель:
+    <span class="fio_inner">
+      <span class="fio_hovered-blue">О</span>куньков
+      <span class="fio_hovered-blue">С</span>емен
+      <span class="fio_hovered-blue">М</span>ихайлович
+    </span>
+  </h2>
+  <span class="info">
+    <a class="phone-number link_main-theme-styled">89923340699</a>
+    <a class="e-mail link_main-theme-styled" href="https://mail.yandex.ru">FoOkySNick@ya.ru</a>
+    <a class="e-mail link_main-theme-styled" href="https://mail.google.com/mail">eyeofstorm63@gmail.com</a>
+  </span>
+  <a (click)="companyInfoClicked()" class="company-info link_main-theme-styled">Информация о компании</a>
+  <p class="content" *ngIf="isCompanyInfoClicked">
+    Вот уже более века часы Rolex сопровождают целеустремленных
+    исследователей во всех уголках планеты – от высочайших горных вершин до океанских глубин.
+    Сегодня при содействии Rolex проходят самые престижные соревнования в таких дисциплинах,
+    как гольф, парусный спорт, теннис, автомотоспорт, турниры по конкуру. Rolex вносит уникальный
+    и действенный вклад в мировую культуру, науку и исследования.
+  </p>
+  <p class="content" *ngIf="isShowRequisitesClicked">
+    БИК: 293847653863<br>
+    ИНН: 273645298<br>
+    Номер счета: 19283763594876235098<br>
+  </p>
+  <section class="login-buttons">
+    <a (click)="showRequisites()" class="show-requisites link_main-theme-styled">Показать реквизиты</a>
+    <button routerLink="/login"
+            class="controls__button log-in-button"
+            [ngClass]="{clicked:isRequestPaymentActive}">Войти в личный кабинет
+    </button>
+    <button routerLink="/registration"
+            class="controls__button log-on-button"
+            [ngClass]="{clicked:isRequestPaymentActive}">Зарегистрироваться
+    </button>
+  </section>
+</article>

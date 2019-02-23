@@ -1,0 +1,158 @@
+.link_main-theme-styled
+{
+  text-decoration: none;
+  color: #007bff;
+}
+
+.link_main-theme-styled:hover
+{
+  text-decoration: none;
+  color: #bc94dd;
+}
+
+.usual-form_main-theme-styled
+{
+  width: 750px;
+  display: inline-block;
+  background: white;
+}
+
+.submit_main-theme-styled
+{
+  text-align: center;
+  line-height: 40px;
+  display: block;
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  background: url('../../assets/submit_btn-bg.jpg');
+  background-size: cover;
+  color: black;
+  border: 1px solid lightgray;
+  margin-left: 20px;
+}
+
+.button_main-theme-styled
+{
+  transition: .5s;
+  background: transparent;
+  border: none;
+  height: 45px;
+  line-height: 40px;
+  cursor: pointer;
+  color: #007bff;
+}
+
+.button_main-theme-styled:hover,
+.clicked
+{
+  transition: .5s;
+  transform: scale(1.1, 1.1);
+  text-decoration: none;
+  color: #bc94dd;
+}
+
+.input_main-theme-styled
+{
+  transition: .5s;
+  border: none;
+  background: white;
+  border-bottom: 2px solid black;
+  float: right;
+  width: 450px;
+  margin-left: 20px;
+}
+
+.input_main-theme-styled:focus
+{
+  transition: .5s;
+  color: #007bff;
+  border-bottom: 2px solid #bc94dd;
+}
+
+.decline-button
+{
+  display: block;
+  margin: 10px 0 0 20px;
+}
+
+.decline-button:hover
+{
+  color: #f00;
+}
+
+input.ng-touched.ng-invalid
+{
+  transition: .5s;
+  border-bottom: 2px solid #f00;
+}
+
+input.ng-touched.ng-valid
+{
+  transition: .5s;
+  border-bottom: 2px solid green;
+}
+
+.label_block_margined
+{
+  margin: 20px;
+  display: block;
+  font-size: 20px;
+}
+
+@media screen and (max-width: 1350px){
+  .submit_main-theme-styled,
+  .decline-button
+  {
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 800px){
+  .usual-form_main-theme-styled,
+  .input_main-theme-styled
+  {
+    margin-left: 10px;
+    width: auto;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .input_main-theme-styled
+  {
+    float: none;
+    display: block;
+    margin: 5px auto;
+  }
+
+  .instruction
+  {
+    text-align: center;
+  }
+
+  .label_block_margined
+  {
+    margin: 20px;
+    text-align: center;
+  }
+}
+
+.nds
+{
+  text-align: center;
+}
+
+input:active, input:focus,
+a:active, a:focus,
+button:active, button:focus
+{
+  outline: none;
+}
+
+input::-moz-focus-inner,
+button::-moz-focus-inner,
+a::-moz-focus-inner
+{
+  border: 0;
+}

@@ -1,0 +1,47 @@
+<app-message [show]="isNotAuthorised" [title]="'Ой-ой'" [message]="'Сначала войдите в свой личный кабинет. Если вы еще не зарегистрированы в системе - пожалуйста, сначала пройдите регистрацию.'"></app-message>
+<app-message [show]="isFailure" [title]="'Упс'" [message]="'Непредвиденная ошибка, пожалуйста проверьте соединение с сетью'"></app-message>
+<app-message [show]="isNotComplete" [title]="'Внимание'" [message]="'Заполните все данные корректно'"></app-message>
+<app-message [show]="isComplete" [title]="'Успех'" [message]="'Ваш запрос прошел, ожидайте подтверждения от администратора по телефону или письмом на электронную почту'"></app-message>
+
+<app-wait-screen *ngIf="isShadowed"></app-wait-screen>
+
+
+<form class="request-payment-form usual-form_main-theme-styled"
+      #myForm="ngForm" (ngSubmit)="mySubmit(myForm.value)">
+  <label class="label_block_margined">
+    ИНН получателя
+    <input class="input_main-theme-styled" name="inn"
+           type="tel" placeholder="10 цифр для юр.лиц и 12 цифр для физ.лиц" required
+           pattern="([0-9]{10})|([0-9]{12})" ngModel autocomplete="off">
+  </label>
+  <label class="label_block_margined">
+    БИК
+    <input class="input_main-theme-styled" placeholder="9 цифр кода БИК" name="bik" type="tel" required
+           pattern="[0-9]{9}" ngModel autocomplete="off">
+  </label>
+  <label class="label_block_margined">
+    Номер счета
+    <input class="input_main-theme-styled" name="accountNumber" type="tel" required
+           pattern="[0-9]{20}" ngModel placeholder="20 цифр номера счета" autocomplete="off">
+  </label>
+  <section class="amount-input_with-nds">
+    <label class="label_block_margined">
+      Сколько
+      <input class="input_main-theme-styled" required name="moneyAmount"
+             pattern="([0-9]{4,5})" type="tel" ngModel placeholder="от 1 000 до 99 999 рублей"
+             autocomplete="off">
+    </label>
+  </section>
+  <label class="label_block_margined">
+    Номер телефона, без 8
+    <input class="input_main-theme-styled" type="tel" required pattern="[0-9]{10}"
+      name="telephone" placeholder="Для уведомления об оплате" ngModel="" autocomplete="off">
+  </label>
+  <label class="label_block_margined">
+    Электронная почта
+    <input class="input_main-theme-styled" name="email" placeholder="Для квитанций об оплате" required
+       pattern="[a-zA-Z0-9]+@[a-z]+(.ru)|(.com)" type="email" ngModel autocomplete="off">
+  </label>
+  <button class="submit_main-theme-styled" type="submit">Создать платеж</button>
+  <button class="decline-button button_main-theme-styled" type="reset">Очистить форму</button>
+</form>

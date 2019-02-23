@@ -1,0 +1,8 @@
+<app-header *ngIf="display()"></app-header>
+<hr *ngIf="display()" class="line_main-theme-styled">
+<app-main *ngIf="display()"></app-main>
+<main>
+  <router-outlet></router-outlet>
+</main>
+<hr *ngIf="display()" class="line_main-theme-styled">
+<app-footer *ngIf="display()"></app-footer>

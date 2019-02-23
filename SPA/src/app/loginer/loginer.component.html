@@ -1,0 +1,23 @@
+<app-message [show]="isPassed" title="Успех" message="Вы успешно вошли в систему, через 3 секунды вы автоматически будете перенаправлены на главную страницу.."></app-message>
+<app-message [show]="isNotPassed" title="Провал" message="Введите корректные данные! Если вы еще не зарегистрированы в системе, то пройдите регистрацию.."></app-message>
+<app-message [show]="isNotComplete" [title]="'Внимание'" [message]="'Заполните все данные корректно!'"></app-message>
+<app-message [show]="isError" [title]="'Упс'" [message]="'Произошла непредвиденная ошибка, пожалуйста, проверьте соединение с сетью..'"></app-message>
+
+<app-admin-panel *ngIf="isAdminPassed"></app-admin-panel>
+
+<app-wait-screen *ngIf="isShadowed"></app-wait-screen>
+
+<form #myForm="ngForm" *ngIf="!isPassed" (ngSubmit)="mySubmit(myForm.value)" class="log-in-form">
+  <label class="login-label label_block_margined">
+    Логин
+    <input type="text" name="login"
+           class="input_main-theme-styled" required
+           placeholder="до 50 символов" maxlength="50" ngModel>
+  </label>
+  <label class="password-label label_block_margined">
+    Пароль
+    <input class="input_main-theme-styled" type="text" name="password"
+           placeholder="от 8 символов" minlength="8" ngModel required>
+  </label>
+  <button class="submit_main-theme-styled log-in" type="submit">Войти</button>
+</form>
